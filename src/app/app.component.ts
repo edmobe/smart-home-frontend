@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +6,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+  logged = false;
   title = 'smart-home';
+
+  loggedEventHandler($event: boolean) {
+    this.logged = $event;
+  }
 }
