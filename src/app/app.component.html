@@ -1,2 +1,2 @@
-<app-control-panel *ngIf="logged"></app-control-panel>
-<app-login (loggedEvent)="loggedEventHandler($event)" *ngIf="!logged"></app-login>
+<app-control-panel *ngIf="!logged"></app-control-panel>
+<app-login (loggedEvent)="loggedEventHandler($event)" *ngIf="logged"></app-login>
