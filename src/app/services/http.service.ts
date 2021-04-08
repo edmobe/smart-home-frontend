@@ -6,7 +6,7 @@ import { Injectable } from '@angular/core';
 })
 export class HttpService {
 
-  private imageUrl = '../../assets/image';
+  private imageUrl = 'http://192.168.0.15:4000/get_image';
 
   constructor(private http: HttpClient) { }
 

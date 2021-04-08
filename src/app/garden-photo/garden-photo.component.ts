@@ -13,11 +13,8 @@ export class GardenPhotoComponent implements OnInit {
 
   constructor(private httpService: HttpService) {}
 
-  ngOnInit(): void {}
-
-  reset() {
-    this.loaded = false;
-    this.imageSource = '../../assets/loading.gif';
+  ngOnInit(): void {
+    this.getImage();
   }
 
   getImage() {
