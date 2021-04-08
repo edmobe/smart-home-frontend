@@ -1,5 +1,5 @@
-import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
-import { HttpService } from '../services/http.service';
+import { Component, OnInit, ChangeDetectorRef, TemplateRef } from '@angular/core';
+import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 
 @Component({
   selector: 'app-control-panel',
@@ -8,10 +8,20 @@ import { HttpService } from '../services/http.service';
 })
 export class ControlPanelComponent implements OnInit {
 
-  private image: any;
   public house_state: any;
+  public modalRef: any;
 
-  constructor(private httpService : HttpService, private changeDetector: ChangeDetectorRef) { }
+  constructor(private changeDetector: ChangeDetectorRef, private modalService: BsModalService, ) {}
+
+  ngOnInit(): void {
+    this.house_state = {
+      room1_light: false,
+      room2_light: false,
+      living_room_light: false,
+      kitchen_light: false,
+      dining_light: false
+    };
+  }
 
   switchLight(room: string): void {
     switch (room) {
@@ -35,27 +45,11 @@ export class ControlPanelComponent implements OnInit {
     }
   }
 
-  ngOnInit(): void {
-    this.house_state = {
-      room1_light: false,
-      room2_light: false,
-      living_room_light: false,
-      kitchen_light: false,
-      dining_light: false
-    };
-
-    this.image = new Image();
-    this.image.src = 'data:image/png;base64,'
-    this.httpService.getImage().subscribe({
-      next: imageJsonString => {
-        this.image.src += imageJsonString.b64_encoded;
-        //document.body.appendChild(this.image);
-      },
-      error: error => {
-        console.error(error);
-      }
-    });
-    
+  openModal(template: TemplateRef<any>) {
+    this.modalRef = this.modalService.show(template, {class: 'modal-lg'});
   }
 
+  detectChanges(): void {
+    this.changeDetector.detectChanges();
+  }
 }

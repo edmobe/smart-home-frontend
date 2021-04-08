@@ -7,14 +7,19 @@ import { ControlPanelComponent } from './control-panel/control-panel.component';
 import { LoginComponent } from './login/login.component';
 
 import { HttpClientModule } from '@angular/common/http';
+import { GardenPhotoComponent } from './garden-photo/garden-photo.component';
+
+import { ModalModule } from 'ngx-bootstrap/modal';
 
 @NgModule({
   declarations: [
     AppComponent,
     ControlPanelComponent,
-    LoginComponent
+    LoginComponent,
+    GardenPhotoComponent
   ],
   imports: [
+    ModalModule.forRoot(),
     BrowserModule,
     AppRoutingModule,
     HttpClientModule

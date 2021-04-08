@@ -26,8 +26,8 @@
 </div>
 -->
 
-<h1 class="center">Smart House Control Panel</h1>
-<p class="center padded">
+<h1 class="center mt-4">Smart House Control Panel</h1>
+<p class="center padded-text">
   Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
   incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
   nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
@@ -88,7 +88,8 @@
         type="image"
         class="light"
         src="../assets/camera.svg"
-        alt="Luz encendida"
+        alt="Cámara"
+        (click)="openModal(template)"
       />
     </div>
     <div class="kitchen center">
@@ -151,8 +152,28 @@
   </div>
 </div>
 
-<p class="center">
-    Íconos diseñados por
+<!--Large modal-->
+<ng-template #template>
+  <div class="modal-header">
+    <h4 id="dialog-sizes-name1" class="modal-title pull-left">
+      Fotografía del jardín
+    </h4>
+    <button
+      type="button"
+      class="close pull-right"
+      (click)="modalRef.hide()"
+      aria-label="Close"
+    >
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <app-garden-photo></app-garden-photo>
+  </div>
+</ng-template>
+
+<p class="center mt-3">
+  Íconos diseñados por
   <a href="https://www.freepik.com" title="Freepik">Freepik</a> y
   <a href="https://www.flaticon.com/authors/good-ware" title="Good Ware"
     >Good Ware</a
