@@ -1,32 +1,4 @@
-<!--
-<div class="container mt-4">
-    <div class="row h-25">
-        <div class="col-12 h-100">
-            <div class="row h-25">
-                <div class="col-12 h-75 text-center">
-                    <h1>Smart House Control Panel</h1>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-12 text-center">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                        labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                        laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
-                        voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
-                        non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="row mt-2 h-75">
-        <div class="col-12 text-center">
-            <img src="../assets/smart_home.png" class="img-fluid fit-image" alt="Smart home image">
-        </div>
-    </div>
-</div>
--->
-
-<h1 class="center mt-4">Smart House Control Panel</h1>
+<h1 class="center pt-4">Smart House Control Panel</h1>
 <p class="center padded-text">
   Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
   incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
@@ -36,12 +8,18 @@
   in culpa qui officia deserunt mollit anim id est laborum.
 </p>
 
-<div class="plan-container">
+<div *ngIf="!loaded" class="center">
+  <img id="gardenImage" src="../../assets/loading.gif" alt="Cargando" />
+  <p *ngIf="!loaded">Cargando el estado de la casa. Por favor espere...</p>
+  <button (click)="loadPlan()">Cargar</button>
+</div>
+
+<div *ngIf="loaded" class="plan-container">
   <div class="house-plan center">
     <div class="room1 center">
       <p class="room-title light-color">Habitación 1</p>
       <input
-        *ngIf="house_state.room1"
+        *ngIf="houseState.room1"
         type="image"
         class="light"
         src="../assets/lightbulb_on.svg"
@@ -49,7 +27,7 @@
         (click)="switchLight('room1')"
       />
       <input
-        *ngIf="!house_state.room1"
+        *ngIf="!houseState.room1"
         type="image"
         class="light"
         src="../assets/lightbulb_off.svg"
@@ -57,16 +35,40 @@
         (click)="switchLight('room1')"
       />
     </div>
+    <div
+      class="door door1 center"
+      [ngStyle]="{ 'background-color': houseState.door1 ? 'green' : 'red' }"
+    >
+      <p class="room-title"></p>
+    </div>
     <div class="stairs center">
       <p class="room-title light-color">Escaleras</p>
     </div>
-    <div class="hidden center">
+    <div class="hiddenArea center">
       <p class="room-title">No visible</p>
+    </div>
+    <div
+      class="door door2 center"
+      [ngStyle]="{ 'background-color': houseState.door2 ? 'green' : 'red' }"
+    >
+      <p class="room-title"></p>
+    </div>
+    <div
+      class="door door3 center"
+      [ngStyle]="{ 'background-color': houseState.door3 ? 'green' : 'red' }"
+    >
+      <p class="room-title"></p>
+    </div>
+    <div
+      class="door door4 center"
+      [ngStyle]="{ 'background-color': houseState.door4 ? 'green' : 'red' }"
+    >
+      <p class="room-title"></p>
     </div>
     <div class="living-room center">
       <p class="room-title">Sala</p>
       <input
-        *ngIf="house_state.living_room"
+        *ngIf="houseState.living_room"
         type="image"
         class="light"
         src="../assets/lightbulb_on.svg"
@@ -74,7 +76,7 @@
         (click)="switchLight('living_room')"
       />
       <input
-        *ngIf="!house_state.living_room"
+        *ngIf="!houseState.living_room"
         type="image"
         class="light"
         src="../assets/lightbulb_off.svg"
@@ -95,7 +97,7 @@
     <div class="kitchen center">
       <p class="room-title light-color">Cocina</p>
       <input
-        *ngIf="house_state.kitchen"
+        *ngIf="houseState.kitchen"
         type="image"
         class="light"
         src="../assets/lightbulb_on.svg"
@@ -103,7 +105,7 @@
         (click)="switchLight('kitchen')"
       />
       <input
-        *ngIf="!house_state.kitchen"
+        *ngIf="!houseState.kitchen"
         type="image"
         class="light"
         src="../assets/lightbulb_off.svg"
@@ -114,7 +116,7 @@
     <div class="dining center">
       <p class="room-title">Comedor</p>
       <input
-        *ngIf="house_state.dining"
+        *ngIf="houseState.dining"
         type="image"
         class="light"
         src="../assets/lightbulb_on.svg"
@@ -122,7 +124,7 @@
         (click)="switchLight('dining')"
       />
       <input
-        *ngIf="!house_state.dining"
+        *ngIf="!houseState.dining"
         type="image"
         class="light"
         src="../assets/lightbulb_off.svg"
@@ -133,7 +135,7 @@
     <div class="room2 center">
       <p class="room-title light-color">Habitación 2</p>
       <input
-        *ngIf="house_state.room2"
+        *ngIf="houseState.room2"
         type="image"
         class="light"
         src="../assets/lightbulb_on.svg"
@@ -141,13 +143,19 @@
         (click)="switchLight('room2')"
       />
       <input
-        *ngIf="!house_state.room2"
+        *ngIf="!houseState.room2"
         type="image"
         class="light"
         src="../assets/lightbulb_off.svg"
         alt="Luz apagada"
         (click)="switchLight('room2')"
       />
+    </div>
+    <div
+      class="door5 center"
+      [ngStyle]="{ 'background-color': houseState.door5 ? 'green' : 'red' }"
+    >
+      <p class="room-title light-color"></p>
     </div>
   </div>
 </div>
@@ -169,10 +177,13 @@
   </div>
   <div class="modal-body">
     <app-garden-photo></app-garden-photo>
+    <div class="mb-2"></div>
   </div>
 </ng-template>
 
-<p class="center mt-3">
+<button *ngIf="loaded" (click)="setDoorStates()">Abrir las puertas</button>
+
+<p class="center pt-3">
   Íconos diseñados por
   <a href="https://www.freepik.com" title="Freepik">Freepik</a> y
   <a href="https://www.flaticon.com/authors/good-ware" title="Good Ware"
@@ -180,8 +191,3 @@
   >
   desde <a href="https://www.flaticon.es/" title="Flaticon">www.flaticon.es</a>
 </p>
-<!-- <img src="../assets/house.jpg" class="img-center" alt="Smart home image">
-<img src="../assets/lightbulb_on.svg" alt="Luz encendida">
-<img src="../assets/lightbulb_off.svg" alt="Luz apagada">
-<div>Iconos diseñados por <a href="https://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.es/" title="Flaticon">www.flaticon.es</a></div>
--->

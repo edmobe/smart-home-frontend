@@ -2,18 +2,18 @@
     margin-top: 32px;
     margin-left: auto;
     margin-right: auto;
-    width: 60%;
-    height: 60%;
-    min-height: 60%;
+    width:30vw;
+    height:30vw; /* same as width */
 }
 
 .room-title {
+    padding-top: 1em;
     max-width: 100%;
     max-height: auto;
 }
 
 .light {
-    max-width:3em;
+    max-width:2.5em;
     height: auto;
     object-fit: cover;
 }
@@ -28,8 +28,8 @@
 
 .house-plan {
     display: grid;
-    grid-template-columns: 20% 20% 20% 20% 20%;
-    grid-template-rows: 25% 25% 25% 25%;
+    grid-template-columns: 19.8% 19.8% 1% 19.8% 19.8% 19.8%;
+    grid-template-rows: 24.5% 24.5% 1% 24.5% 24.5% 1%;
     height: 100%
 }
 
@@ -41,25 +41,62 @@
     background-color: #C25000;
 }
 
-.stairs {
+.door1 {
     grid-column-start: 3;
     grid-column-end: 4;
     grid-row-start: 1;
-    grid-row-end: 3;
+    grid-row-end: 2;
+    background-color: red;
+    border:solid;
+    border-width: 0.05em;
+}
+
+.stairs {
+    grid-column-start: 4;
+    grid-column-end: 5;
+    grid-row-start: 1;
+    grid-row-end: 4;
     background-color: #8A5A37;
 }
 
-.hidden {
-    grid-column-start: 4;
-    grid-column-end: 6;
+.hiddenArea {
+    grid-column-start: 5;
+    grid-column-end: 7;
     grid-row-start: 1;
     grid-row-end: 3;
     background-color: #BF9E86;
 }
 
+.door {
+    background-color: red;
+    border:solid;
+    border-width: 0.05em;
+}
+
+.door2 {
+    grid-column-start: 1;
+    grid-column-end: 4;
+    grid-row-start: 3;
+    grid-row-end: 4;
+}
+
+.door3 {
+    grid-column-start: 5;
+    grid-column-end: 6;
+    grid-row-start: 3;
+    grid-row-end: 4;
+}
+
+.door4 {
+    grid-column-start: 6;
+    grid-column-end: 7;
+    grid-row-start: 3;
+    grid-row-end: 4;
+}
+
 .living-room {
     grid-column-start: 1;
-    grid-column-end: 3;
+    grid-column-end: 4;
     grid-row-start: 2;
     grid-row-end: 3;
     background-color: #BF9E86;
@@ -67,37 +104,47 @@
 
 .garden {
     grid-column-start: 1;
-    grid-column-end: 4;
-    grid-row-start: 3;
-    grid-row-end: 5;
+    grid-column-end: 5;
+    grid-row-start: 4;
+    grid-row-end: 6;
     background-color: #735F50;
 }
 
 
 .kitchen {
-    grid-column-start: 4;
-    grid-column-end: 5;
-    grid-row-start: 3;
-    grid-row-end: 4;
+    grid-column-start: 5;
+    grid-column-end: 6;
+    grid-row-start: 4;
+    grid-row-end: 5;
     background-color: #8A5A37;
 }
 
 .dining {
-    grid-column-start: 4;
-    grid-column-end: 5;
-    grid-row-start: 4;
-    grid-row-end: 5;
+    grid-column-start: 5;
+    grid-column-end: 6;
+    grid-row-start: 5;
+    grid-row-end: 6;
     background-color: #BF9E86;
 }
 
 .room2 {
-    grid-column-start: 5;
-    grid-column-end: 6;
-    grid-row-start: 3;
-    grid-row-end: 5;
+    grid-column-start: 6;
+    grid-column-end: 7;
+    grid-row-start: 4;
+    grid-row-end: 6;
     background-color: #C25000;
 }
 
+
+.door5 {
+    grid-column-start: 5;
+    grid-column-end: 6;
+    grid-row-start: 6;
+    grid-row-end: 7;
+    background-color: red;
+    border:solid;
+    border-width: 0.05em;
+}
 
 .padded-text {
     padding: 0em 10em;
