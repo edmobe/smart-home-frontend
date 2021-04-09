@@ -11,7 +11,6 @@
 <div *ngIf="!loaded" class="center">
   <img id="gardenImage" src="../../assets/loading.gif" alt="Cargando" />
   <p *ngIf="!loaded">Cargando el estado de la casa. Por favor espere...</p>
-  <button (click)="loadPlan()">Cargar</button>
 </div>
 
 <div *ngIf="loaded" class="plan-container">
@@ -37,7 +36,7 @@
     </div>
     <div
       class="door door1 center"
-      [ngStyle]="{ 'background-color': houseState.door1 ? 'green' : 'red' }"
+      [ngStyle]="{ 'background-color': !houseState.door1 ? 'green' : 'red' }"
     >
       <p class="room-title"></p>
     </div>
@@ -49,19 +48,19 @@
     </div>
     <div
       class="door door2 center"
-      [ngStyle]="{ 'background-color': houseState.door2 ? 'green' : 'red' }"
+      [ngStyle]="{ 'background-color': !houseState.door2 ? 'green' : 'red' }"
     >
       <p class="room-title"></p>
     </div>
     <div
       class="door door3 center"
-      [ngStyle]="{ 'background-color': houseState.door3 ? 'green' : 'red' }"
+      [ngStyle]="{ 'background-color': !houseState.door3 ? 'green' : 'red' }"
     >
       <p class="room-title"></p>
     </div>
     <div
       class="door door4 center"
-      [ngStyle]="{ 'background-color': houseState.door4 ? 'green' : 'red' }"
+      [ngStyle]="{ 'background-color': !houseState.door4 ? 'green' : 'red' }"
     >
       <p class="room-title"></p>
     </div>
@@ -153,7 +152,7 @@
     </div>
     <div
       class="door5 center"
-      [ngStyle]="{ 'background-color': houseState.door5 ? 'green' : 'red' }"
+      [ngStyle]="{ 'background-color': !houseState.door5 ? 'green' : 'red' }"
     >
       <p class="room-title light-color"></p>
     </div>
@@ -180,8 +179,6 @@
     <div class="mb-2"></div>
   </div>
 </ng-template>
-
-<button *ngIf="loaded" (click)="setDoorStates()">Abrir las puertas</button>
 
 <p class="center pt-3">
   Íconos diseñados por

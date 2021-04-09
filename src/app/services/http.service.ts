@@ -6,11 +6,23 @@ import { Injectable } from '@angular/core';
 })
 export class HttpService {
 
-  private imageUrl = 'http://192.168.0.15:4000/get_image';
+  private apiUrl = 'http://192.168.0.15:4000';
 
   constructor(private http: HttpClient) { }
 
   getImage() {
-    return this.http.get<any>(this.imageUrl);
+    return this.http.get<any>(`${this.apiUrl}/get_image`);
+  }
+
+  getLeds() {
+    return this.http.get<any>(`${this.apiUrl}/get_state_led`);
+  }
+
+  getDoors() {
+    return this.http.get<any>(`${this.apiUrl}/get_door`);
+  }
+
+  setLed(id: number) {
+    return this.http.get<any>(`${this.apiUrl}/set_led/${id}`);
   }
 }
