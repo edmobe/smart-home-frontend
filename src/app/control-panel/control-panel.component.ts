@@ -1,5 +1,7 @@
 import { ChangeDetectorRef, Component, OnInit, TemplateRef } from '@angular/core';
+import { Router } from '@angular/router';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
+import { AuthService } from '../services/auth.service';
 import { HttpService } from '../services/http.service';
 
 @Component({
@@ -24,11 +26,15 @@ export class ControlPanelComponent implements OnInit {
   public modalRef: any;
   public loaded = false;
 
-  constructor(private modalService: BsModalService, private httpService: HttpService, private changeDetector: ChangeDetectorRef) { }
+  constructor(
+    private modalService: BsModalService,
+    private httpService: HttpService,
+    private authService: AuthService,
+    private router: Router
+  ) { }
 
   ngOnInit(): void {
     this.httpService.getLeds().subscribe((response) => {
-      console.log(response);
       this.houseState.room1 = !!response.led4;
       this.houseState.room2 = !!response.led5;
       this.houseState.living_room = !!response.led1;
@@ -98,5 +104,10 @@ export class ControlPanelComponent implements OnInit {
 
   loadPlan() {
     this.loaded = true;
+  }
+
+  logout() {
+    this.authService.logout();
+    this.router.navigate(['/login']);
   }
 }

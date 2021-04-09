@@ -1,11 +1,15 @@
-<h1 class="center pt-4">Smart House Control Panel</h1>
+<nav class="navbar navbar-dark bg-dark justify-content-between">
+  <a class="navbar-brand">Smart House</a>
+  <form class="form-inline">
+    <button class="btn btn-danger my-2 my-sm-0" type="submit" (click)="logout()">Cerrar sesión</button>
+  </form>
+</nav>
+
+<h1 class="center pt-4">Panel de control</h1>
 <p class="center padded-text">
-  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-  incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
-  nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-  Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore
-  eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt
-  in culpa qui officia deserunt mollit anim id est laborum.
+  En esta aplicación se estará conectando a un servidor web embebido a la medida, para el monitoreo y control de señales
+  y sensores de una casa inteligente. Usted puede controlar el modelo en hardware que representa el comportamiento de
+  dicha casa.
 </p>
 
 <div *ngIf="!loaded" class="center">
@@ -17,27 +21,12 @@
   <div class="house-plan center">
     <div class="room1 center">
       <p class="room-title light-color">Habitación 1</p>
-      <input
-        *ngIf="houseState.room1"
-        type="image"
-        class="light"
-        src="../assets/lightbulb_on.svg"
-        alt="Luz encendida"
-        (click)="switchLight('room1')"
-      />
-      <input
-        *ngIf="!houseState.room1"
-        type="image"
-        class="light"
-        src="../assets/lightbulb_off.svg"
-        alt="Luz apagada"
-        (click)="switchLight('room1')"
-      />
+      <input *ngIf="houseState.room1" type="image" class="light" src="../assets/lightbulb_on.svg" alt="Luz encendida"
+        (click)="switchLight('room1')" />
+      <input *ngIf="!houseState.room1" type="image" class="light" src="../assets/lightbulb_off.svg" alt="Luz apagada"
+        (click)="switchLight('room1')" />
     </div>
-    <div
-      class="door door1 center"
-      [ngStyle]="{ 'background-color': !houseState.door1 ? 'green' : 'red' }"
-    >
+    <div class="door door1 center" [ngStyle]="{ 'background-color': !houseState.door1 ? 'green' : 'red' }">
       <p class="room-title"></p>
     </div>
     <div class="stairs center">
@@ -46,114 +35,48 @@
     <div class="hiddenArea center">
       <p class="room-title">No visible</p>
     </div>
-    <div
-      class="door door2 center"
-      [ngStyle]="{ 'background-color': !houseState.door2 ? 'green' : 'red' }"
-    >
+    <div class="door door2 center" [ngStyle]="{ 'background-color': !houseState.door2 ? 'green' : 'red' }">
       <p class="room-title"></p>
     </div>
-    <div
-      class="door door3 center"
-      [ngStyle]="{ 'background-color': !houseState.door3 ? 'green' : 'red' }"
-    >
+    <div class="door door3 center" [ngStyle]="{ 'background-color': !houseState.door3 ? 'green' : 'red' }">
       <p class="room-title"></p>
     </div>
-    <div
-      class="door door4 center"
-      [ngStyle]="{ 'background-color': !houseState.door4 ? 'green' : 'red' }"
-    >
+    <div class="door door4 center" [ngStyle]="{ 'background-color': !houseState.door4 ? 'green' : 'red' }">
       <p class="room-title"></p>
     </div>
     <div class="living-room center">
       <p class="room-title">Sala</p>
-      <input
-        *ngIf="houseState.living_room"
-        type="image"
-        class="light"
-        src="../assets/lightbulb_on.svg"
-        alt="Luz encendida"
-        (click)="switchLight('living_room')"
-      />
-      <input
-        *ngIf="!houseState.living_room"
-        type="image"
-        class="light"
-        src="../assets/lightbulb_off.svg"
-        alt="Luz apagada"
-        (click)="switchLight('living_room')"
-      />
+      <input *ngIf="houseState.living_room" type="image" class="light" src="../assets/lightbulb_on.svg"
+        alt="Luz encendida" (click)="switchLight('living_room')" />
+      <input *ngIf="!houseState.living_room" type="image" class="light" src="../assets/lightbulb_off.svg"
+        alt="Luz apagada" (click)="switchLight('living_room')" />
     </div>
     <div class="garden center">
       <p class="room-title light-color">Jardín</p>
-      <input
-        type="image"
-        class="light"
-        src="../assets/camera.svg"
-        alt="Cámara"
-        (click)="openModal(template)"
-      />
+      <input type="image" class="light" src="../assets/camera.svg" alt="Cámara" (click)="openModal(template)" />
     </div>
     <div class="kitchen center">
       <p class="room-title light-color">Cocina</p>
-      <input
-        *ngIf="houseState.kitchen"
-        type="image"
-        class="light"
-        src="../assets/lightbulb_on.svg"
-        alt="Luz encendida"
-        (click)="switchLight('kitchen')"
-      />
-      <input
-        *ngIf="!houseState.kitchen"
-        type="image"
-        class="light"
-        src="../assets/lightbulb_off.svg"
-        alt="Luz apagada"
-        (click)="switchLight('kitchen')"
-      />
+      <input *ngIf="houseState.kitchen" type="image" class="light" src="../assets/lightbulb_on.svg" alt="Luz encendida"
+        (click)="switchLight('kitchen')" />
+      <input *ngIf="!houseState.kitchen" type="image" class="light" src="../assets/lightbulb_off.svg" alt="Luz apagada"
+        (click)="switchLight('kitchen')" />
     </div>
     <div class="dining center">
       <p class="room-title">Comedor</p>
-      <input
-        *ngIf="houseState.dining"
-        type="image"
-        class="light"
-        src="../assets/lightbulb_on.svg"
-        alt="Luz encendida"
-        (click)="switchLight('dining')"
-      />
-      <input
-        *ngIf="!houseState.dining"
-        type="image"
-        class="light"
-        src="../assets/lightbulb_off.svg"
-        alt="Luz apagada"
-        (click)="switchLight('dining')"
-      />
+      <input *ngIf="houseState.dining" type="image" class="light" src="../assets/lightbulb_on.svg" alt="Luz encendida"
+        (click)="switchLight('dining')" />
+      <input *ngIf="!houseState.dining" type="image" class="light" src="../assets/lightbulb_off.svg" alt="Luz apagada"
+        (click)="switchLight('dining')" />
     </div>
     <div class="room2 center">
       <p class="room-title light-color">Habitación 2</p>
-      <input
-        *ngIf="houseState.room2"
-        type="image"
-        class="light"
-        src="../assets/lightbulb_on.svg"
-        alt="Luz encendida"
-        (click)="switchLight('room2')"
-      />
-      <input
-        *ngIf="!houseState.room2"
-        type="image"
-        class="light"
-        src="../assets/lightbulb_off.svg"
-        alt="Luz apagada"
-        (click)="switchLight('room2')"
-      />
+      <input *ngIf="houseState.room2" type="image" class="light" src="../assets/lightbulb_on.svg" alt="Luz encendida"
+        (click)="switchLight('room2')" />
+      <input *ngIf="!houseState.room2" type="image" class="light" src="../assets/lightbulb_off.svg" alt="Luz apagada"
+        (click)="switchLight('room2')" />
     </div>
-    <div
-      class="door5 center"
-      [ngStyle]="{ 'background-color': !houseState.door5 ? 'green' : 'red' }"
-    >
+    <div class="door5 center" [ngStyle]="{ 'background-color': !houseState.door5 ? 'green' : 'red' }">
       <p class="room-title light-color"></p>
     </div>
   </div>
@@ -165,12 +88,7 @@
     <h4 id="dialog-sizes-name1" class="modal-title pull-left">
       Fotografía del jardín
     </h4>
-    <button
-      type="button"
-      class="close pull-right"
-      (click)="modalRef.hide()"
-      aria-label="Close"
-    >
+    <button type="button" class="close pull-right" (click)="modalRef.hide()" aria-label="Close">
       <span aria-hidden="true">&times;</span>
     </button>
   </div>
@@ -183,8 +101,6 @@
 <p class="center pt-3">
   Íconos diseñados por
   <a href="https://www.freepik.com" title="Freepik">Freepik</a> y
-  <a href="https://www.flaticon.com/authors/good-ware" title="Good Ware"
-    >Good Ware</a
-  >
+  <a href="https://www.flaticon.com/authors/good-ware" title="Good Ware">Good Ware</a>
   desde <a href="https://www.flaticon.es/" title="Flaticon">www.flaticon.es</a>
 </p>
