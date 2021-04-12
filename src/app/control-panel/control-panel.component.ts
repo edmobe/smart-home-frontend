@@ -87,6 +87,62 @@ export class ControlPanelComponent implements OnInit {
     }
   }
 
+  turnOffAll() {
+    if (this.houseState.room1) {
+      this.httpService.setLed(4).subscribe(() => {
+        this.houseState.room1 = !this.houseState.room1;
+      });
+    }
+    if(this.houseState.living_room) {
+      this.httpService.setLed(1).subscribe(() => {
+        this.houseState.living_room = !this.houseState.living_room;
+      });
+    }
+    if (this.houseState.kitchen) {
+      this.httpService.setLed(2).subscribe(() => {
+        this.houseState.kitchen = !this.houseState.kitchen;
+      });
+    }
+    if (this.houseState.dining) {
+      this.httpService.setLed(3).subscribe(() => {
+        this.houseState.dining = !this.houseState.dining;
+      });
+    }
+    if (this.houseState.room2) {
+      this.httpService.setLed(5).subscribe(() => {
+        this.houseState.room2 = !this.houseState.room2;
+      });
+    }
+  }
+
+  turnOnAll() {
+    if (!this.houseState.room1) {
+      this.httpService.setLed(4).subscribe(() => {
+        this.houseState.room1 = !this.houseState.room1;
+      });
+    }
+    if(!this.houseState.living_room) {
+      this.httpService.setLed(1).subscribe(() => {
+        this.houseState.living_room = !this.houseState.living_room;
+      });
+    }
+    if (!this.houseState.kitchen) {
+      this.httpService.setLed(2).subscribe(() => {
+        this.houseState.kitchen = !this.houseState.kitchen;
+      });
+    }
+    if (!this.houseState.dining) {
+      this.httpService.setLed(3).subscribe(() => {
+        this.houseState.dining = !this.houseState.dining;
+      });
+    }
+    if (!this.houseState.room2) {
+      this.httpService.setLed(5).subscribe(() => {
+        this.houseState.room2 = !this.houseState.room2;
+      });
+    }
+  }
+
   openModal(template: TemplateRef<any>) {
     this.modalRef = this.modalService.show(template, { class: 'modal-lg' });
   }
